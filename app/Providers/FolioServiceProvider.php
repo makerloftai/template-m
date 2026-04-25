@@ -3,9 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Livewire\Volt\Volt;
+use Laravel\Folio\Folio;
 
-class VoltServiceProvider extends ServiceProvider
+class FolioServiceProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -20,8 +20,10 @@ class VoltServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Volt::mount([
-            resource_path('views/pages'),
+        Folio::path(resource_path('views/pages'))->middleware([
+            '*' => [
+                //
+            ],
         ]);
     }
 }
